@@ -1,0 +1,146 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Requests</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="Datta Able Bootstrap admin template made using Bootstrap 4 and it has huge amount of ready made feature, UI components, pages which completely fulfills any dashboard needs." />
+    <meta name="keywords" content="admin templates, bootstrap admin templates, bootstrap 4, dashboard, dashboard templets, sass admin templets, html admin templates, responsive, bootstrap admin templates free download,premium bootstrap admin templates, datta able, datta able bootstrap admin template, free admin theme, free dashboard template"/>
+    <meta name="author" content="CodedThemes"/>
+
+    <link rel="icon" href="../../Dash/assets/images/favicon.ico" type="image/x-icon"/>
+    <link rel="stylesheet" href="../../Dash/assets/fonts/fontawesome/css/fontawesome-all.min.css"/>
+    <!-- animation css -->
+    <link rel="stylesheet" href="../../Dash/assets/plugins/animation/css/animate.min.css"/>
+    <!-- vendor css -->
+    <link rel="stylesheet" href="../../Dash/assets/css/style.css"/>
+</head>
+<body>
+<div class="loader-bg">
+    <div class="loader-track">
+        <div class="loader-fill"></div>
+    </div>
+</div>
+<div th:if="${message != null}" style="padding:10px 20px; color:white ;background-color: #388526;">
+    <span class="block sm:inline">[[${message}]]</span>
+
+</div>
+
+<div th:replace="Dashboard/shared/sidebar"></div>
+
+<header class="navbar pcoded-header navbar-expand-lg navbar-light" xmlns:sec="http://www.w3.org/1999/xhtml">
+    <div class="m-header">
+        <a class="mobile-menu" id="mobile-collapse1" href="javascript:"><span></span></a>
+        <a href="index.xhtml" class="b-brand">
+            <div class="b-bg">
+                <i class="feather icon-trending-up"></i>
+            </div>
+            <span class="b-title">Civil Marriage</span>
+        </a>
+    </div>
+    <a class="mobile-menu" id="mobile-header" href="javascript:">
+        <i class="feather icon-more-horizontal"></i>
+    </a>
+    <div class="collapse navbar-collapse">
+
+        <ul class="navbar-nav ml-auto">
+            <li>
+
+            </li>
+            <li>
+                <div class="dropdown drp-user">
+                    <a href="javascript:" class="dropdown-toggle" data-toggle="dropdown">
+                        <i class="icon feather icon-settings"></i>
+                    </a>
+                    <form>
+                        <div class="dropdown-menu dropdown-menu-right profile-notification">
+                            <div class="pro-head">
+                                <img src="../Dash/assets/images/user/avatar-1.jpg" class="img-radius" alt="User-Profile-Image"/>
+                                <span sec:authorize="hasAuthority('ROLE_ADMIN')">Administrator</span>
+                                <span sec:authorize="hasAuthority('ROLE_USER')" sec:authentication="name"></span>
+
+                            </div>
+                            <ul class="pro-body">
+
+                                <li>
+                                    <a href="../login" class="dropdown-item"><i class="feather icon-lock"></i> Logout</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </form>
+                </div>
+            </li>
+        </ul>
+    </div>
+</header>
+
+<!--<div sec:authorize="hasAuthority('ROLE_USER')" th:replace="Dashboard/shared/header"></div>-->
+<div class="pcoded-main-container">
+    <div class="pcoded-wrapper">
+        <div class="pcoded-content">
+            <div class="pcoded-inner-content">
+                <!-- [ breadcrumb ] start -->
+                <div class="page-header">
+                    <div class="page-block">
+                        <div class="row align-items-center">
+                            <div class="col-md-12">
+                                <div class="page-header-title">
+                                    <h5 class="m-b-10">Add a Request</h5>
+                                </div>
+                                <ul class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="index.xhtml"><i class="feather icon-home"></i></a></li>
+                                    <li class="breadcrumb-item"><a href="javascript:">Request</a></li>
+                                    <li class="breadcrumb-item"><a href="javascript:">Add</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- [ breadcrumb ] end -->
+                <div class="main-body">
+                    <div class="page-wrapper">
+                        <!-- [ Main Content ] start -->
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h5>Add a Request</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <!--<h5>Form controls</h5>-->
+                                        <hr/>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <form method="post" th:action="@{/requests/register}" th:object="${requests}">
+                                                    <div class="form-group">
+                                                        <label>Date (MM/dd/yyyy)</label>
+                                                        <input type="text" class="form-control" required="true" th:field="*{requestDate}" placeholder="Please select a date"/>
+                                                    </div>
+                                                    <input type="submit" class="btn btn-primary" value="Submit"/>
+                                                </form>
+                                            </div>
+
+                                        </div>
+
+
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="../../Dash/assets/js/vendor-all.min.js"></script>
+<script src="../../Dash/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script src="../../Dash/assets/js/pcoded.min.js"></script>
+</body>
+</html>
+
